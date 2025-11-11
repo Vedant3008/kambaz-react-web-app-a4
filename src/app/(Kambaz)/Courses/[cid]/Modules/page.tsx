@@ -5,14 +5,19 @@ import { ListGroup, ListGroupItem } from "react-bootstrap";
 import ModuleControlButtons from "./ModuleControlButtons";
 import LessonControlButtons from "./LessonControlButtons";
 import * as db from "../../../Database";
-
+interface Module {
+  _id: string;
+  name: string;
+  course: string;
+  lessons: any[];
+  editing?: boolean;
+}
 export default function Modules() {
   const { cid } = useParams();
   const modules = db.modules;
   
   return (
     <div>
-      {/* Add any header or buttons here if needed */}
       <ListGroup id="wd-modules" className="rounded-0">
         {modules
           .filter((module: any) => module.course === cid)
